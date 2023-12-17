@@ -11,15 +11,15 @@ public enum DescricaoPessoa
     MEDICO
 }
 
-namespace clinicaDentario_23005
+namespace Pessoas
 {
-     public class Pessoa
+    public class Pessoa
     {
         #region Atributos
-        public string nome;
-        public DescricaoPessoa descricao;
-        static int cod; //esta variavel vai ser a que vai identificar cada pessoa na clinica
-        public int codGlobal;
+        private string nome;
+        private DescricaoPessoa descricao;
+        private static int cod; //esta variavel vai ser a que vai identificar cada pessoa na clinica
+        private int codGlobal;
 
         #endregion
 
@@ -33,13 +33,22 @@ namespace clinicaDentario_23005
         {
             cod = 1;
         }
-
         public Pessoa()
         {
             nome = "";
             descricao = tipo;
             codGlobal = cod;
             cod++;
+            descricao = DescricaoPessoa.UTENTE;
+            //descricao = DescricaoPessoa.MEDICO;
+            //descricao = DescricaoPessoa.FUNCIONARIO;            
+        }
+        public Pessoa(string Nome, DescricaoPessoa descricaoP, int codGlob, DescricaoPessoa tipoP)
+        {
+            nome = Nome;
+            descricao = descricaoP;
+            codGlobal = codGlob;
+            tipo = tipoP;
         }
 
         #endregion
