@@ -10,4 +10,13 @@
     <ProjectReference Include="..\Dados\Dados.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ObjetosNegocio">
+      <HintPath>..\ObjetosNegocio\bin\Debug\net6.0\ObjetosNegocio.dll</HintPath>
+    </Reference>
+    <Reference Include="Validacoes">
+      <HintPath>..\Validacoes\bin\Debug\net6.0\Validacoes.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

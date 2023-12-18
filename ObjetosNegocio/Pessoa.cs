@@ -48,6 +48,7 @@ namespace ObjetosNegocio
          * ao fechar o programa, a memória vai continuar la */
         private static int cod;
         protected int codGlobal;
+        protected int idade;
 
         #endregion
 
@@ -67,16 +68,17 @@ namespace ObjetosNegocio
             descricao = tipo;
             codGlobal = cod;
             cod++;
+            idade = 20;
             descricao = DescricaoPessoa.UTENTE;
             //descricao = DescricaoPessoa.MEDICO;
             //descricao = DescricaoPessoa.FUNCIONARIO;            
         }
-        public Pessoa(string Nome, DescricaoPessoa descricaoP, int codGlob, DescricaoPessoa tipoP)
+        public Pessoa(string Nome, DescricaoPessoa descricaoP, int codGlob, int Idade)
         {
             nome = Nome;
             descricao = descricaoP;
             codGlobal = codGlob;
-            tipo = tipoP;
+            idade = Idade;
         }
 
         #endregion
@@ -96,12 +98,18 @@ namespace ObjetosNegocio
 
       //ACHO QUE FALTA UMA PARA O CODGLOBAL!!!!!!1
 
+        public int Idade
+        {
+            set { idade = value; }
+            get { return idade; }
+        }
+
         #endregion
 
         #region override
         public override string ToString()
         {
-            return String.Format("Ficha da Pessoa-> Nome: {0}; Funcao: {1} ; codigo {2}\n", nome, descricao, codGlobal);
+            return String.Format("Ficha da Pessoa-> Nome: {0}; Funcao: {1} ; codigo {2}\n; idade{3}\n", nome, descricao, codGlobal, idade);
         }
 
         #endregion
@@ -162,19 +170,20 @@ namespace ObjetosNegocio
         {
             Nome = "Antonio";
             codGlobal = 10;
+            Idade = 17;
             mail = " ";
             numTelef = 987654321;
             numCartaoSaude++;
         }
-        public Utente(string nome, int codUtente, string Mail, int NumTelefUtente)
+        public Utente(string nome, int codUtente, string Mail, int NumTelefUtente, int idadeUtente)
         {
             Nome = nome;
             codGlobal = codUtente;
+            Idade = idadeUtente;
             mail = Mail;
             numTelef = NumTelefUtente;
             numCartaoSaude++;
         }
-
 
         #endregion
 
@@ -225,6 +234,7 @@ namespace ObjetosNegocio
         {
             Nome = "Joaquim ";
             codGlobal = 20;
+            idade = 23;
             //descricao = DescricaoPessoa.FUNCIONARIO; -> penso que n faz sentido por isso retirei
             cargo = CargoFuncionario.ASSISTENTE;
             numTelef = 912345678;
@@ -232,10 +242,11 @@ namespace ObjetosNegocio
             salario = 900;
         }
 
-        public Funcionario(string nome, int codigoFunc,CargoFuncionario CargoFunc, int NumTeleFuncionario, int HorarioFunc, int SalarioFunc)
+        public Funcionario(string nome, int codigoFunc,CargoFuncionario CargoFunc, int NumTeleFuncionario, int HorarioFunc, int SalarioFunc, int idadeFunc)
         {
             Nome = nome;
             codGlobal = codigoFunc;
+            Idade = idadeFunc;
             cargo = CargoFunc;
             numTelef = NumTeleFuncionario;
             horario = HorarioFunc;
@@ -297,15 +308,17 @@ namespace ObjetosNegocio
         {
             Nome = "Maria";
             codGlobal = 30;
+            idade = 27;
             salario = 1000;
             horarioTrabalho = 5;
             tipoEspecialidade = Especialidade.ORTODONTIA;
         }
         
-        public Medico(string nome, int codMedico, int Salario,int Horario,Especialidade TipoEsp)
+        public Medico(string nome, int codMedico, int Salario,int Horario,Especialidade TipoEsp, int idadeMedico)
         {
             Nome = nome;
-            codGlobal = codMedico;  
+            codGlobal = codMedico;
+            Idade = idadeMedico;
             salario = Salario;
             horarioTrabalho = Horario;
             tipoEspecialidade = TipoEsp;

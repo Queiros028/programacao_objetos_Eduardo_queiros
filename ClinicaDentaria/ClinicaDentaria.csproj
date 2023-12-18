@@ -8,14 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Consulta">
-      <HintPath>Consulta\bin\Debug\net6.0\Consulta.dll</HintPath>
+    <Reference Include="Dados">
+      <HintPath>..\Dados\bin\Debug\net6.0\Dados.dll</HintPath>
     </Reference>
     <Reference Include="ObjetosNegocio">
       <HintPath>..\ObjetosNegocio\bin\Debug\net6.0\ObjetosNegocio.dll</HintPath>
     </Reference>
-    <Reference Include="Pessoas">
-      <HintPath>Pessoas\bin\Debug\net6.0\Pessoas.dll</HintPath>
+    <Reference Include="RegrasNegocio">
+      <HintPath>..\RegrasNegocio\bin\Debug\net6.0\RegrasNegocio.dll</HintPath>
     </Reference>
   </ItemGroup>
 
