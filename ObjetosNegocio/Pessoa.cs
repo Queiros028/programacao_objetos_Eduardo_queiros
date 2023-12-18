@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ *"Parâmetros" de pessoa(pode ser Utente, Funcionario, Medico)
+ *Autor: Eduardo Queirós, nº 23005
+ *
+ */
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
@@ -62,6 +67,9 @@ namespace ObjetosNegocio
         {
             cod = 1;
         }
+        /// <summary>
+        /// Construtor de pessoa com parâmetros default
+        /// </summary>
         public Pessoa()
         {
             nome = "";
@@ -73,6 +81,13 @@ namespace ObjetosNegocio
             //descricao = DescricaoPessoa.MEDICO;
             //descricao = DescricaoPessoa.FUNCIONARIO;            
         }
+        /// <summary>
+        /// Construtor Pessoa
+        /// </summary>
+        /// <param name="Nome"></param>
+        /// <param name="descricaoP"></param>
+        /// <param name="codGlob"></param>
+        /// <param name="Idade"></param>
         public Pessoa(string Nome, DescricaoPessoa descricaoP, int codGlob, int Idade)
         {
             nome = Nome;
@@ -84,20 +99,30 @@ namespace ObjetosNegocio
         #endregion
 
         #region Propriedades
+        /// <summary>
+        /// Propriedade para o nome da pessoa
+        /// </summary>
         public string Nome
         {
             set { nome = value; }
             get { return nome; }
         }
 
+        /// <summary>
+        /// Propriedade para o tipo de pessoa que é
+        /// </summary>
         public DescricaoPessoa tipo
         {
             get { return descricao; }
             set { descricao = value; }
         }
 
-      //ACHO QUE FALTA UMA PARA O CODGLOBAL!!!!!!1
+      //ACHO QUE FALTA UMA PARA O CODGLOBAL!!!!!!
 
+
+      /// <summary>
+      /// Propriedade para a idade da pessoa
+      /// </summary>
         public int Idade
         {
             set { idade = value; }
@@ -107,6 +132,10 @@ namespace ObjetosNegocio
         #endregion
 
         #region override
+        /// <summary>
+        /// Formato dos dados da pessoa ao ser "chamado"
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return String.Format("Ficha da Pessoa-> Nome: {0}; Funcao: {1} ; codigo {2}\n; idade{3}\n", nome, descricao, codGlobal, idade);
@@ -116,6 +145,11 @@ namespace ObjetosNegocio
 
 
         #region Outros Metodos
+        /// <summary>
+        /// Comparar se dois objetos pessoa são iguais
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object? obj)
         {
             if (obj == null || !(obj is Pessoa))
@@ -134,6 +168,11 @@ namespace ObjetosNegocio
         }
 
         //ver se nesta esta correta
+
+        /// <summary>
+        /// Calcula o código Hash
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return cod.GetHashCode(); // Ou qualquer outra lógica para gerar um código hash único para a instância
@@ -159,12 +198,15 @@ namespace ObjetosNegocio
         #region Métodos
 
         #region Construtores
+        /// <summary>
+        /// Inicializar o numero de cartao de saude a 0
+        /// </summary>
         static Utente()
         {
             numCartaoSaude = 0;
         }
         /// <summary>
-        /// parametros default
+        /// Construtor para parametros default
         /// </summary>
         public Utente()
         {
@@ -175,6 +217,14 @@ namespace ObjetosNegocio
             numTelef = 987654321;
             numCartaoSaude++;
         }
+        /// <summary>
+        /// Construtor de Utente
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param name="codUtente"></param>
+        /// <param name="Mail"></param>
+        /// <param name="NumTelefUtente"></param>
+        /// <param name="idadeUtente"></param>
         public Utente(string nome, int codUtente, string Mail, int NumTelefUtente, int idadeUtente)
         {
             Nome = nome;
@@ -191,12 +241,19 @@ namespace ObjetosNegocio
         /*
          * nota: nao vou fazer nd para o num de cartao de saude porque quero que n se mexa nisso e que seja o programa a "atibuir" pois tenho o numCartaoSaude++;
          */
+
+        /// <summary>
+        /// Propriedade para o email do utente
+        /// </summary>
         public string Mail
         {
             set { mail = value; }
             get { return mail; }
         }
 
+        /// <summary>
+        /// Propriedade para o num de telefone do utente
+        /// </summary>
         public int NumTelefUtente
         {
             set { NumTelefUtente = value; }
@@ -228,7 +285,7 @@ namespace ObjetosNegocio
 
         #region Construtores
         /// <summary>
-        /// Parametros default
+        /// Construtor parametros default para funcionário
         /// </summary>
         public Funcionario()
         {
@@ -241,7 +298,16 @@ namespace ObjetosNegocio
             horario = 2;
             salario = 900;
         }
-
+        /// <summary>
+        /// Construtor para funcionário
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param name="codigoFunc"></param>
+        /// <param name="CargoFunc"></param>
+        /// <param name="NumTeleFuncionario"></param>
+        /// <param name="HorarioFunc"></param>
+        /// <param name="SalarioFunc"></param>
+        /// <param name="idadeFunc"></param>
         public Funcionario(string nome, int codigoFunc,CargoFuncionario CargoFunc, int NumTeleFuncionario, int HorarioFunc, int SalarioFunc, int idadeFunc)
         {
             Nome = nome;
@@ -256,25 +322,33 @@ namespace ObjetosNegocio
         #endregion
 
         #region Propriedades
-
+        /// <summary>
+        /// Propriedade para o cargo do funcionario
+        /// </summary>
         public CargoFuncionario cargoFunc
         {
             get { return cargoFunc; }
             set { cargoFunc = value; }
         }
-
+        /// <summary>
+        /// Propriedade para o numero de telefone do funcionario
+        /// </summary>
         public int NumTelef
         {
             get { return numTelef; } 
             set { numTelef = value; }
         }
-
+        /// <summary>
+        /// Propriedade para ver qual o horario de trabalho do funcionario
+        /// </summary>
         public int Horario
         {
             get { return horario; }
             set { horario = value; }
         }
-
+        /// <summary>
+        /// Propriedade para o salário do funcionario
+        /// </summary>
         public int Salario
         {
             get { return salario; }
@@ -302,7 +376,7 @@ namespace ObjetosNegocio
 
         #region Construtores
         /// <summary>
-        /// Parâmetros default
+        /// Construtor com parâmetros default
         /// </summary>
         public Medico()
         {
@@ -314,6 +388,15 @@ namespace ObjetosNegocio
             tipoEspecialidade = Especialidade.ORTODONTIA;
         }
         
+        /// <summary>
+        /// Construtor para Medico
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param name="codMedico"></param>
+        /// <param name="Salario"></param>
+        /// <param name="Horario"></param>
+        /// <param name="TipoEsp"></param>
+        /// <param name="idadeMedico"></param>
         public Medico(string nome, int codMedico, int Salario,int Horario,Especialidade TipoEsp, int idadeMedico)
         {
             Nome = nome;
@@ -327,17 +410,26 @@ namespace ObjetosNegocio
         #endregion
 
         #region Propriedades
+
+        /// <summary>
+        /// Propriedade para o salário do medico
+        /// </summary>
         public int Salario
         {
             get { return salario; }
             set { salario = value; }
         }
-
+        /// <summary>
+        /// Propriedade para verificar o horario de trabalho do medico
+        /// </summary>
         public int HorarioTrabalho
         {
             get { return horarioTrabalho; }
             set { horarioTrabalho = value; }
         }
+        /// <summary>
+        /// Propriedade para a especialidade do medico
+        /// </summary>
         public Especialidade TipoEspecialidade
         {
             get { return tipoEspecialidade; }

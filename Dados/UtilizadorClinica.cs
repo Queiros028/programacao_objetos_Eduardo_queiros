@@ -1,4 +1,9 @@
-﻿using ObjetosNegocio;
+﻿/*
+ *Gestão dos utilizadores da clínica
+ *Autor: Eduardo Queirós, nº 23005
+ *
+ */
+using ObjetosNegocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +17,9 @@ namespace Dados
     {
         //dictionary de Pessoas que foi criada em ObjetosNegocio
         static Dictionary<int, List<Pessoa>> pessoa = new Dictionary<int, List<Pessoa>>();
-
+        /// <summary>
+        /// Inicializar dictionary de utilizadores
+        /// </summary>
         public UtilizadorClinica()
         {
             pessoa = new Dictionary<int, List<Pessoa>>();

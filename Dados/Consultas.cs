@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ *Gestão das consultas
+ *Autor: Eduardo Queirós, nº 23005
+ *
+ */
+using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using ObjetosNegocio;
 
@@ -9,7 +14,9 @@ namespace Dados
         //dictionary de Consulta que foi criada em ObjetosNegocio
         static Dictionary<int, List<Consulta>> consulta = new Dictionary<int, List<Consulta>>();
 
-
+        /// <summary>
+        /// Inicializar dictionary consulta
+        /// </summary>
         private static void inicializConsulta()
         {
             consulta = new Dictionary<int, List<Consulta>>();

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ *"Parâmetros" de cada consulta
+ *Autor: Eduardo Queirós, nº 23005
+ *
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +50,7 @@ namespace ObjetosNegocio
 
         #region Construtores
         /// <summary>
-        /// parametros default
+        /// Construtor parametros default
         /// </summary>
         public Consulta()
         {
@@ -61,7 +66,13 @@ namespace ObjetosNegocio
             duracao = 30;
 
         }
-
+        /// <summary>
+        /// Construtor Consulta
+        /// </summary>
+        /// <param name="idConsulta"></param>
+        /// <param name="tipoTratamento"></param>
+        /// <param name="tipoPagamento"></param>
+        /// <param name="duracaoConsulta"></param>
         public Consulta(int idConsulta, TipoTratamento tipoTratamento, TipoPagamento tipoPagamento, int duracaoConsulta)
         {
             id = idConsulta;
@@ -70,7 +81,14 @@ namespace ObjetosNegocio
             dataConsulta = DateTime.Today;
             duracao = duracaoConsulta;
         }
-        
+        /// <summary>
+        ///Construtor Consulta
+        /// </summary>
+        /// <param name="idConsulta"></param>
+        /// <param name="tipoTratamento"></param>
+        /// <param name="tipoPagamento"></param>
+        /// <param name="dataCons"></param>
+        /// <param name="duracaoConsulta"></param>
         public Consulta(int idConsulta, TipoTratamento tipoTratamento, TipoPagamento tipoPagamento, DateTime dataCons, int duracaoConsulta)
         {
             id = idConsulta;
@@ -83,18 +101,25 @@ namespace ObjetosNegocio
         #endregion
 
         #region Propriedades
-
+        /// <summary>
+        /// Propriedade para o id da consulta
+        /// </summary>
         public int idConsulta
         {
             get { return idConsulta; }
         }
 
+        /// <summary>
+        /// Propriedade para o tipo de tratamento
+        /// </summary>
         public TipoTratamento tipoTratamento
         {
             get { return tipoTratamento; }
             set { tipoTratamento = value; }
         }
-
+        /// <summary>
+        /// Propriedade para o tipo de pagamento
+        /// </summary>
         public TipoPagamento tipoPagamento
         {
             get { return tipoPagamento; }
@@ -102,6 +127,10 @@ namespace ObjetosNegocio
         }
 
         //Voltar a ver esta propriedade
+
+        /// <summary>
+        /// Propriedade para a data da consulta
+        /// </summary>
         public DateTime DataConsulta
         {
             get { return dataConsulta;}
@@ -112,6 +141,10 @@ namespace ObjetosNegocio
 
         #region Override
 
+        /// <summary>
+        /// Formato dos dados da consulta ao ser "chamado"
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("Consulta: Id {0}\n Tipo tratamento {1}\n Duracao {2}\n Data realizacao {3}\n Tipo de pagamento {4}\n", id, duracao, dataConsulta, tipoPagamento);
@@ -137,6 +170,10 @@ namespace ObjetosNegocio
             return false;
         }
 
+        /// <summary>
+        /// Calcula o código Hash
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return id.GetHashCode(); // Ou qualquer outra lógica para gerar um código hash único para a instância
@@ -147,6 +184,12 @@ namespace ObjetosNegocio
 
         #region Outros Metodos
 
+        /// <summary>
+        /// Verificar se o objeto que está é consulta
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public int CompareTo(object? obj)
         {
             if (obj.GetType() == typeof(Consulta))

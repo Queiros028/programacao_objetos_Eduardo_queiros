@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Regras da clínica
+ *Autor: Eduardo Queirós, nº 23005
+ *
+ */
+using System;
 using ObjetosNegocio;
 using Dados;
 using Validacoes;
@@ -13,6 +18,12 @@ namespace RegrasNegocio
             
         }
 
+        /// <summary>
+        /// Regra de negócio ao inserir pessoa
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+   /*
         public static bool InserePessoa(Pessoa p)
         {
             if (p.tipo != DescricaoPessoa.UTENTE)     // Regra de negocio
@@ -21,7 +32,7 @@ namespace RegrasNegocio
             }
             return false;
         }
-
+   */
         /// <summary>
         /// Idade válida para ser utente da clínica
         /// </summary>

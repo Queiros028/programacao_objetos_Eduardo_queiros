@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ *Main program Clínica Dentária
+ *Autor: Eduardo Queirós, nº 23005
+ *
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +20,7 @@ namespace Clinic
         {
             #region Utilizadores CLinica
             Pessoa p1 = new Pessoa("Tone", DescricaoPessoa.FUNCIONARIO,2, 20);
-            UtilizadorClinica.InserePessoa(p1, dia);
-
+            Console.WriteLine(p1);
 
             #endregion
 

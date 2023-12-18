@@ -1,0 +1,119 @@
+\hypertarget{class_dados_1_1_utilizador_clinica}{}\doxysection{Dados.\+Utilizador\+Clinica Class Reference}
+\label{class_dados_1_1_utilizador_clinica}\index{Dados.UtilizadorClinica@{Dados.UtilizadorClinica}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_dados_1_1_utilizador_clinica_a64fa1f3bbfba9fc46460fc2b67c9f623}\label{class_dados_1_1_utilizador_clinica_a64fa1f3bbfba9fc46460fc2b67c9f623}} 
+{\bfseries Utilizador\+Clinica} ()
+\begin{DoxyCompactList}\small\item\em Inicializar dictionary de utilizadores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_dados_1_1_utilizador_clinica_a1d520cafd2a559ea3ea29542c9427db5}{Insere\+Pessoa}} (\mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}} p, int dia)
+\begin{DoxyCompactList}\small\item\em Funcao para inserir pessoas. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_dados_1_1_utilizador_clinica_ab457d53ac0eccf071da5b3b8bb9195ec}{Existe\+Pessoa}} (string nome)
+\begin{DoxyCompactList}\small\item\em Funcao para verificar se existem essas pessoas para verificar vai comparar pelo nome. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_dados_1_1_utilizador_clinica_adce5e3e26879657d9ad293163ef56ebb}{Guarda\+Pessoa\+Binario}} (Dictionary$<$ int, List$<$ \mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}} $>$ $>$ pessoa, string caminho\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Guardar Pessoas num ficheiro de texto em binário. \end{DoxyCompactList}\item 
+static Dictionary$<$ int, List$<$ \mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}} $>$ $>$ \mbox{\hyperlink{class_dados_1_1_utilizador_clinica_a7fdf72ba75a94d48fc33ec9ad12243dd}{Carregar\+FicheiroB}} (string caminho\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Carregar ficheiro binário das Pessoas. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_dados_1_1_utilizador_clinica_ac6f1b293eadce507272cd590662508e7}{Remover\+Pessoa}} (Dictionary$<$ int, List$<$ \mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}} $>$ $>$ pessoa, int chave)
+\begin{DoxyCompactList}\small\item\em Função para remover num dictionary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_dados_1_1_utilizador_clinica_a7fdf72ba75a94d48fc33ec9ad12243dd}\label{class_dados_1_1_utilizador_clinica_a7fdf72ba75a94d48fc33ec9ad12243dd}} 
+\index{Dados.UtilizadorClinica@{Dados.UtilizadorClinica}!CarregarFicheiroB@{CarregarFicheiroB}}
+\index{CarregarFicheiroB@{CarregarFicheiroB}!Dados.UtilizadorClinica@{Dados.UtilizadorClinica}}
+\doxysubsubsection{\texorpdfstring{CarregarFicheiroB()}{CarregarFicheiroB()}}
+{\footnotesize\ttfamily static Dictionary$<$ int, List$<$ \mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}} $>$ $>$ Dados.\+Utilizador\+Clinica.\+Carregar\+FicheiroB (\begin{DoxyParamCaption}\item[{string}]{caminho\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Carregar ficheiro binário das Pessoas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_dados_1_1_utilizador_clinica_ab457d53ac0eccf071da5b3b8bb9195ec}\label{class_dados_1_1_utilizador_clinica_ab457d53ac0eccf071da5b3b8bb9195ec}} 
+\index{Dados.UtilizadorClinica@{Dados.UtilizadorClinica}!ExistePessoa@{ExistePessoa}}
+\index{ExistePessoa@{ExistePessoa}!Dados.UtilizadorClinica@{Dados.UtilizadorClinica}}
+\doxysubsubsection{\texorpdfstring{ExistePessoa()}{ExistePessoa()}}
+{\footnotesize\ttfamily static bool Dados.\+Utilizador\+Clinica.\+Existe\+Pessoa (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funcao para verificar se existem essas pessoas para verificar vai comparar pelo nome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_dados_1_1_utilizador_clinica_adce5e3e26879657d9ad293163ef56ebb}\label{class_dados_1_1_utilizador_clinica_adce5e3e26879657d9ad293163ef56ebb}} 
+\index{Dados.UtilizadorClinica@{Dados.UtilizadorClinica}!GuardaPessoaBinario@{GuardaPessoaBinario}}
+\index{GuardaPessoaBinario@{GuardaPessoaBinario}!Dados.UtilizadorClinica@{Dados.UtilizadorClinica}}
+\doxysubsubsection{\texorpdfstring{GuardaPessoaBinario()}{GuardaPessoaBinario()}}
+{\footnotesize\ttfamily static void Dados.\+Utilizador\+Clinica.\+Guarda\+Pessoa\+Binario (\begin{DoxyParamCaption}\item[{Dictionary$<$ int, List$<$ \mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}} $>$ $>$}]{pessoa,  }\item[{string}]{caminho\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Guardar Pessoas num ficheiro de texto em binário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pessoa} & \\
+\hline
+{\em caminho\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_dados_1_1_utilizador_clinica_a1d520cafd2a559ea3ea29542c9427db5}\label{class_dados_1_1_utilizador_clinica_a1d520cafd2a559ea3ea29542c9427db5}} 
+\index{Dados.UtilizadorClinica@{Dados.UtilizadorClinica}!InserePessoa@{InserePessoa}}
+\index{InserePessoa@{InserePessoa}!Dados.UtilizadorClinica@{Dados.UtilizadorClinica}}
+\doxysubsubsection{\texorpdfstring{InserePessoa()}{InserePessoa()}}
+{\footnotesize\ttfamily static bool Dados.\+Utilizador\+Clinica.\+Insere\+Pessoa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}}}]{p,  }\item[{int}]{dia }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funcao para inserir pessoas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \\
+\hline
+{\em dia} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_dados_1_1_utilizador_clinica_ac6f1b293eadce507272cd590662508e7}\label{class_dados_1_1_utilizador_clinica_ac6f1b293eadce507272cd590662508e7}} 
+\index{Dados.UtilizadorClinica@{Dados.UtilizadorClinica}!RemoverPessoa@{RemoverPessoa}}
+\index{RemoverPessoa@{RemoverPessoa}!Dados.UtilizadorClinica@{Dados.UtilizadorClinica}}
+\doxysubsubsection{\texorpdfstring{RemoverPessoa()}{RemoverPessoa()}}
+{\footnotesize\ttfamily static void Dados.\+Utilizador\+Clinica.\+Remover\+Pessoa (\begin{DoxyParamCaption}\item[{Dictionary$<$ int, List$<$ \mbox{\hyperlink{class_objetos_negocio_1_1_pessoa}{Pessoa}} $>$ $>$}]{pessoa,  }\item[{int}]{chave }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Função para remover num dictionary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dicionario} & \\
+\hline
+{\em chave} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/wados/\+One\+Drive/\+Ambiente de Trabalho/stuff/eduardo/licenciatura/2 ano/\+Programacao\+\_\+obj/programacao\+\_\+objetos\+\_\+\+Eduardo\+\_\+queiros/\+Dados/Utilizador\+Clinica.\+cs\end{DoxyCompactItemize}
