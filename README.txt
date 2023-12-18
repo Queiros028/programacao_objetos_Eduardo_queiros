@@ -1,0 +1,1 @@
+Estava a ocorrer um erro no programa que eu tinha por isso precisei de criar outro... Vou deixar o codigo do programa antigo num ficheiro word caso o professor queira ver
