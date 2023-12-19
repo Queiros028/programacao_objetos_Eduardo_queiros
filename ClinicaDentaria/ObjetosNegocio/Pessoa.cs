@@ -138,7 +138,12 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format("Ficha da Pessoa-> Nome: {0}; Funcao: {1} ; codigo {2}\n; idade{3}\n", nome, descricao, codGlobal, idade);
+            return String.Format("Ficha da Pessoa-> Nome: {0}; Funcao: {1}; codigo {2}; idade {3}", nome, descricao, codGlobal, idade);
+        }
+
+        public override int GetHashCode()
+        {
+            return codGlobal.GetHashCode(); // Ou qualquer outra lógica para gerar um código hash único para a instância
         }
 
         #endregion
@@ -167,16 +172,6 @@ namespace ObjetosNegocio
             return false;
         }
 
-        //ver se nesta esta correta
-
-        /// <summary>
-        /// Calcula o código Hash
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return cod.GetHashCode(); // Ou qualquer outra lógica para gerar um código hash único para a instância
-        }
         #endregion
 
         #endregion
@@ -262,7 +257,44 @@ namespace ObjetosNegocio
 
         #endregion
 
+        #region Overrides
+        /// <summary>
+        /// Formato da ficha do Utente
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return String.Format("Ficha do Funcionario-> Nome: {0};Codigo {1};Idade {2};Mail {3}; Num Telefone {4}; Num cartao saude {5} ", Nome, codGlobal, Idade, mail, numTelef, numCartaoSaude);
+        }
+        #endregion
+
         #region Outros Metodos
+        /// <summary>
+        /// Comparar se dois objetos Utente são iguais
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || !(obj is Utente))
+            {
+                return false;
+            }
+
+            Utente aux = (Utente)obj;
+            //ver se neste if a primeira condição está correta...
+            if (System.String.Equals(Nome, aux.Nome) && codGlobal == aux.codGlobal && Idade == aux.idade)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return codGlobal.GetHashCode(); 
+        }
 
         #endregion
 
@@ -356,7 +388,44 @@ namespace ObjetosNegocio
         }
         #endregion
 
+        #region Overrides
+        /// <summary>
+        /// Formato da ficha do funcionário
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return String.Format("Ficha do Funcionario-> Nome: {0};Codigo {1};Idade {2};Cargo {3}; Num Telefone {4}; Horario {5}; Salario {6} ",Nome, codGlobal, Idade, cargo, numTelef, horario, salario);
+        }
+        #endregion
+
         #region Outros Metodos
+        /// <summary>
+        /// Comparar se dois objetos Funcionario são iguais
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || !(obj is Funcionario))
+            {
+                return false;
+            }
+
+            Funcionario aux = (Funcionario)obj;
+            //ver se neste if a primeira condição está correta...
+            if (codGlobal == aux.codGlobal && System.String.Equals(Nome, aux.Nome) && Idade == aux.idade)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return codGlobal.GetHashCode(); 
+        }
 
         #endregion
 
@@ -366,7 +435,7 @@ namespace ObjetosNegocio
     public class Medico : Pessoa
     {
         #region Atributos
-        private Especialidade tipoEspecialidade;
+        protected Especialidade tipoEspecialidade;
         private int salario;
         private int horarioTrabalho; //variavel para dizer quantos dias por semana o medico irá trabalhar(0 a 7)
         #endregion
@@ -399,12 +468,12 @@ namespace ObjetosNegocio
         /// <param name="idadeMedico"></param>
         public Medico(string nome, int codMedico, int Salario, int Horario, Especialidade TipoEsp, int idadeMedico)
         {
-            Nome = nome;
-            codGlobal = codMedico;
-            Idade = idadeMedico;
-            salario = Salario;
-            horarioTrabalho = Horario;
-            tipoEspecialidade = TipoEsp;
+            this.Nome = nome;
+            this.codGlobal = codMedico;
+            this.Idade = idadeMedico;
+            this.salario = Salario;
+            this.horarioTrabalho = Horario;
+            this.tipoEspecialidade = TipoEsp;
         }
 
         #endregion
@@ -435,9 +504,49 @@ namespace ObjetosNegocio
             get { return tipoEspecialidade; }
             set { tipoEspecialidade = value; }
         }
+
+        #region Overrides
+        /// <summary>
+        /// Formato da ficha do Medico
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return String.Format("Ficha do Funcionario-> Nome: {0};Codigo {1};Idade {2};Salario {3}; Horario Trabalho {4}; Tipo de especialidade {5} ", Nome, codGlobal, Idade, salario, horarioTrabalho, tipoEspecialidade);
+        }
+
+        public override int GetHashCode()
+        {
+            return codGlobal.GetHashCode(); 
+        }
+
+        #endregion
         #endregion
 
+
         #region Outros Metodos
+
+        /// <summary>
+        /// Comparar se dois objetos Medico são iguais
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || !(obj is Medico))
+            {
+                return false;
+            }
+
+            Medico aux = (Medico)obj;
+            //ver se neste if a primeira condição está correta...
+            if (System.String.Equals(Nome, aux.Nome) && codGlobal == aux.codGlobal && Idade == aux.idade)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         #endregion
 

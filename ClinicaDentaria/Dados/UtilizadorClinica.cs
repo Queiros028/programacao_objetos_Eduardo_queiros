@@ -10,7 +10,7 @@ using ObjetosNegocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
+//using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,17 +34,30 @@ namespace Dados
         /// <param name="p"></param>
         /// <param name="dia"></param>
         /// <returns></returns>
-        public static bool InserePessoa(Pessoa p, int dia)
+        public static bool InserePessoa(Pessoa p, int id)
         {
-            if (pessoa.ContainsKey(dia))
+
+            if(!pessoa.ContainsKey(id))
             {
+                pessoa.Add(id, new List<Pessoa>());
+            }
+            if (!pessoa[id].Contains(p))
+            {
+                pessoa[id].Add(p);
                 return true;
             }
-            else
-            {
-                pessoa.Add(dia, new List<Pessoa>());
-            }
             return false;
+
+
+            //if (pessoa.ContainsKey(dia))
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    pessoa.Add(dia, new List<Pessoa>());
+            //}
+            //return false;
         }
 
         /// <summary>
@@ -83,15 +96,21 @@ namespace Dados
         /// </summary>
         /// <param name="pessoa"></param>
         /// <param name="caminhoFicheiro"></param>
-        public static void GuardaPessoaBinario(Dictionary<int, List<Pessoa>> pessoa, string caminhoFicheiro)
+        public static bool GuardaPessoaBinario(string nomeFicheiro)
         {
-            using (FileStream stream = new FileStream(caminhoFicheiro, FileMode.Create))
-            {
-                //Cria um BinaryFormatter para serialização do dictionary
-                BinaryFormatter formatter = new BinaryFormatter();
 
-                //Serizalização do dictionary no arquivo
-                formatter.Serialize(stream, pessoa);
+            try
+            {
+                Stream stream = File.Open(nomeFicheiro, FileMode.OpenOrCreate);
+                BinaryFormatter bin = new BinaryFormatter();
+                bin.Serialize(stream, pessoa);
+                stream.Close();
+                return true;
+
+            }catch (IOException e) 
+            {
+                Console.WriteLine("Erro: "+ e.Message);
+                throw e;
             }
         }
         /// <summary>
@@ -139,7 +158,9 @@ namespace Dados
             }
         }
 
-
-
+        public static bool InserePessoa(Pessoa p1)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -23,16 +23,23 @@ namespace RegrasNegocio
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-   /*
-        public static bool InserePessoa(Pessoa p)
+   
+        public static bool InserePessoa(Pessoa p, int id)
         {
-            if (p.tipo != DescricaoPessoa.UTENTE)     // Regra de negocio
+            
+            if (p.tipo == DescricaoPessoa.UTENTE)     // Regra de negocio
             {
-                return UtilizadorClinica.InserePessoa(p);
+                return UtilizadorClinica.InserePessoa(p, id);
+            } else if (p.tipo == DescricaoPessoa.FUNCIONARIO)
+            {
+                return UtilizadorClinica.InserePessoa(p, id);
+            }else if(p.tipo == DescricaoPessoa.MEDICO)
+            {
+                return UtilizadorClinica.InserePessoa(p, id);
             }
             return false;
         }
-   */
+   
         /// <summary>
         /// Idade válida para ser utente da clínica
         /// </summary>

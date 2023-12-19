@@ -4,11 +4,8 @@
  *
  */
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
-
 
 /// <summary>
 /// enumerado tipo de tratamanento que pode ser realizado durante uma consulta
@@ -31,11 +28,13 @@ public enum TipoPagamento
 }
 namespace ObjetosNegocio
 {
+    [Serializable]
     public class Consulta : IComparable
     {
 
         #region Atributos
-        //para ja tenho estas variaveis, dps ver se é preciso colocar mais ou n
+
+        [NonSerialized]
         private int id;
         private TipoTratamento tipoTrat;
         private TipoPagamento tipoPag;
@@ -49,38 +48,7 @@ namespace ObjetosNegocio
         #region Métodos
 
         #region Construtores
-        /// <summary>
-        /// Construtor parametros default
-        /// </summary>
-        public Consulta()
-        {
-            id = 0;
-            tipoTrat = TipoTratamento.ORTODONTIA;
-            //tipoTrat = TipoTratamento.BRANQUEAMENTO;
-            //tipoTrat = TipoTratamento.RESTAURACAO;
-            //tipoTrat = TipoTratamento.DESVITALIZACAO;
-            tipoPag = TipoPagamento.DINHEIRO;
-            //tipoPag = TipoPagamento.CARTAO;
-            //tipoPag = TipoPagamento.CHEQUE;
-            dataConsulta = DateTime.Now;
-            duracao = 30;
 
-        }
-        /// <summary>
-        /// Construtor Consulta
-        /// </summary>
-        /// <param name="idConsulta"></param>
-        /// <param name="tipoTratamento"></param>
-        /// <param name="tipoPagamento"></param>
-        /// <param name="duracaoConsulta"></param>
-        public Consulta(int idConsulta, TipoTratamento tipoTratamento, TipoPagamento tipoPagamento, int duracaoConsulta)
-        {
-            id = idConsulta;
-            tipoTrat = tipoTratamento;
-            tipoPag = tipoPagamento;
-            dataConsulta = DateTime.Today;
-            duracao = duracaoConsulta;
-        }
         /// <summary>
         ///Construtor Consulta
         /// </summary>
@@ -91,11 +59,11 @@ namespace ObjetosNegocio
         /// <param name="duracaoConsulta"></param>
         public Consulta(int idConsulta, TipoTratamento tipoTratamento, TipoPagamento tipoPagamento, DateTime dataCons, int duracaoConsulta)
         {
-            id = idConsulta;
-            tipoTrat = tipoTratamento;
-            tipoPag = tipoPagamento;
-            dataConsulta = dataCons;
-            duracao = duracaoConsulta;
+            this.id = idConsulta;
+            this.tipoTrat = tipoTratamento;
+            this.tipoPag = tipoPagamento;
+            this.dataConsulta = dataCons;
+            this.duracao = duracaoConsulta;
         }
 
         #endregion
@@ -147,7 +115,7 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("Consulta: Id {0}\n Tipo tratamento {1}\n Duracao {2}\n Data realizacao {3}\n Tipo de pagamento {4}\n", id, duracao, dataConsulta, tipoPagamento);
+            return string.Format("Consulta: Id {0} Tipo tratamento {1} Duracao {2} Data realizacao {3} Tipo de pagamento {4}", id, duracao, dataConsulta, tipoPagamento);
         }
 
         /// <summary>
@@ -163,11 +131,12 @@ namespace ObjetosNegocio
             }
 
             Consulta aux = (Consulta)obj;
-            if (id == aux.id && tipoTratamento == aux.tipoTratamento && duracao == aux.duracao && tipoPagamento == aux.tipoPagamento)
+            if (this.id == aux.id && this.tipoTratamento == aux.tipoTratamento && this.duracao == aux.duracao && this.tipoPagamento == aux.tipoPagamento)
             {
                 return true;
             }
             return false;
+            throw new Exception("nao e possivel inserir visto que nao e consulta");
         }
 
         /// <summary>
@@ -180,7 +149,22 @@ namespace ObjetosNegocio
         }
         #endregion
 
+        #region Operadores
+        public static bool operator ==(Consulta c1, Consulta c2)
+        {
+            if ((c1.id == c2.id) && (c1.tipoTratamento == c2.tipoTratamento) && (c1.tipoPagamento == c2.tipoPagamento) && (c1.dataConsulta == c2.dataConsulta) && (c1.duracao == c2.duracao))
+            {
+                return true;
+            }
+            return false;
 
+        }
+
+        public static bool operator !=(Consulta c1, Consulta c2)
+        {
+            return !(c1 == c2);
+        }
+        #endregion
 
         #region Outros Metodos
 
@@ -195,10 +179,6 @@ namespace ObjetosNegocio
             if (obj.GetType() == typeof(Consulta))
             {
                 Consulta aux = (Consulta)obj;
-
-                //if (aux.nome > this.nome)
-                //if(aux.nome.CompareTo(this.nome))
-                //if(String.Compare(aux.nome,this.nome))
                 if (this.id.CompareTo(aux.id) > 0) return 1;
                 else
                     if (this.id.CompareTo(aux.id) < 0) return -1;

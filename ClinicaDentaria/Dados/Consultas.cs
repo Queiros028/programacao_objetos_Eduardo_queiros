@@ -5,44 +5,52 @@
  */
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+using System.Linq;
 using ObjetosNegocio;
-
 namespace Dados
 {
+    [Serializable]
     public class Consultas
     {
         //dictionary de Consulta que foi criada em ObjetosNegocio
-        static Dictionary<int, List<Consulta>> consulta = new Dictionary<int, List<Consulta>>();
+        [NonSerialized]
+        static Dictionary<int, List<Consulta>> consulta;
 
         /// <summary>
         /// Inicializar dictionary consulta
         /// </summary>
-        private static void inicializConsulta()
+         static Consultas()
         {
             consulta = new Dictionary<int, List<Consulta>>();
         }
 
-        static Consultas()
+   /// <summary>
+   /// Insere uma consulta
+   /// </summary>
+   /// <param name="cons"></param>
+   /// <param name="id"></param>
+   /// <returns></returns>
+        public static bool RegistaConsulta(Consulta cons, int id)
         {
-            inicializConsulta();
-        }
-        /// <summary>
-        /// inserir uma consulta
-        /// </summary>
-        /// <param name="c"></param> 
-        /// <param name="dia"></param> 
-        /// <returns></returns>
-        public static bool RegistaConsulta(Consultas cons, int dia)
-        {
-            if (consulta.ContainsKey(dia))
+            // Certifique-se de que a chave id existe no dicionário
+            if (!consulta.ContainsKey(id))
             {
+                consulta.Add(id, new List<Consulta>());
+            }
+
+            // Verifique se a consulta já existe na lista associada à chave id
+            if (!consulta[id].Contains(cons))
+            {
+                consulta[id].Add(cons);
                 return true;
             }
-            else
-            {
-                consulta.Add(dia, new List<Consulta>());
-            }
+
             return false;
+        
+
         }
 
         /// <summary>
@@ -51,7 +59,7 @@ namespace Dados
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static bool ExisteConsulta(int id)
+        public static bool ExisteConsulta(int id, Consulta cons)
         {
             //Ver se o dictionary foi inicializado
             if (consulta == null)
@@ -59,17 +67,13 @@ namespace Dados
                 return false;
             }
 
-            foreach (var pair in consulta)
+            if (!consulta.ContainsKey(id))
+                consulta.Add(id, new List<Consulta>());
+            if (!consulta[id].Contains(cons))
             {
-                List<Consulta> listConsultas = pair.Value;
+                consulta[id].Add(cons);
+                return true;
 
-                foreach (Consulta cons in listConsultas)
-                {
-                    if (cons.idConsulta == id)
-                    {
-                        return true;
-                    }
-                }
             }
             return false;
         }
@@ -79,43 +83,49 @@ namespace Dados
         /// <summary>
         /// Guardar as consultas num ficheiro Binário
         /// </summary>
-        /// <param name="pessoa"></param>
-        /// <param name="caminhoFicheiro"></param>
-        public static void GuardaConsultaBinario(Dictionary<int, List<Consulta>> consulta, string caminhoFicheiroConsulta)
+        /// <param name="nomeFicheiro"></param>
+        /// <returns></returns>
+        public static bool GuardaConsultaBinario(string nomeFicheiro)
         {
-            using (FileStream stream = new FileStream(caminhoFicheiroConsulta, FileMode.Create))
+            try
             {
-                //Cria um BinaryFormatter para serialização do dictionary
-                BinaryFormatter formatter = new BinaryFormatter();
-
-                //Serizalização do dictionary no arquivo
-                formatter.Serialize(stream, consulta);
+                Stream stream = File.Open(nomeFicheiro, FileMode.OpenOrCreate);
+                BinaryFormatter bin = new BinaryFormatter();
+                bin.Serialize(stream, consulta);
+                stream.Close();
+                return true;
+            }
+            catch (IOException e)
+            {
+                Console.Write("Erro ao guardar o ficheiro...:" + e.Message);
+                throw e;
             }
         }
         /// <summary>
-        /// Carregar ficheiro binário das Consultas
+        /// lê as consultas num ficheiro Binário
         /// </summary>
-        /// <param name="caminhoFicheiro"></param>
+        /// <param name="nomeFicheiro"></param>
         /// <returns></returns>
-        public static Dictionary<int, List<Consulta>> CarregarConsultaFicheiroB(string caminhoFicheiroConsulta)
+        public static bool CarregarConsultaFicheiroB(string nomeFicheiro)
         {
-            // Verifica se o arquivo existe antes de tentar carregar
-            if (File.Exists(caminhoFicheiroConsulta))
-            {
-                // Cria um FileStream para ler o arquivo binário
-                using (FileStream stream = new FileStream(caminhoFicheiroConsulta, FileMode.Open))
-                {
-                    // Cria um BinaryFormatter para desserializar o dicionário
-                    BinaryFormatter formatter = new BinaryFormatter();
 
-                    // Desserializa o dicionário do arquivo
-                    return (Dictionary<int, List<Consulta>>)formatter.Deserialize(stream);
+            if (File.Exists(nomeFicheiro) && (new FileInfo(nomeFicheiro).Length > 0))
+            {
+                try
+                {
+                    Stream stream = File.Open(nomeFicheiro, FileMode.Open);
+                    BinaryFormatter bin = new BinaryFormatter();
+                    consulta = (Dictionary<int, List<Consulta>>)bin.Deserialize(stream);
+                    stream.Close();
+                    return true;
+                }
+                catch (FileLoadException e)
+                {
+                    Console.Write("Erro ao carregar o ficheiro..." + e.Message);
+                    throw e;
                 }
             }
-            else
-            {
-                return new Dictionary<int, List<Consulta>>();
-            }
+            return false;
         }
 
         /// <summary>
@@ -123,17 +133,17 @@ namespace Dados
         /// </summary>
         /// <param name="pessoa"></param>
         /// <param name="chave"></param>
-        public static void RemoverConsulta(Dictionary<int, List<Consulta>> consulta, int chave)
+        public static void RemoverConsulta(Consulta cons, int id)
         {
             // Verifica se a chave existe no dicionário antes de remover
-            if (consulta.ContainsKey(chave))
+            if (consulta.ContainsKey(id))
             {
                 // Remove a chave do dicionário
-                consulta.Remove(chave);
+                consulta.Remove(id);
             }
             else
             {
-                Console.WriteLine("A chave '{chave}' não existe no dicionário. Não é possível remover.", chave);
+                Console.WriteLine("A chave '{chave}' não existe no dicionário. Não é possível remover.", id);
             }
         }
 
