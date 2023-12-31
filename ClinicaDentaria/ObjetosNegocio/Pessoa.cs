@@ -1,17 +1,12 @@
-﻿/*
- *"Parâmetros" de pessoa(pode ser Utente, Funcionario, Medico)
- *Autor: Eduardo Queirós, nº 23005
- *
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
+/*
+ * Declaração dos dados das pessoas que utilizam a clinica dentaria
+ */
 
 /// <summary>
 /// Que tipo de pessoa é
@@ -40,12 +35,13 @@ public enum Especialidade
     RESTAURACAO, //restauraçao do dente do utente
     DESVITALIZACAO //desvitalização do dente do utente
 }
-
 namespace ObjetosNegocio
 {
+    [Serializable]
     public class Pessoa
     {
         #region Atributos
+        [NonSerialized]
         private string nome;
         //para poder utilizar esta descrição noutras classes foi necessário colocar protected
         protected DescricaoPessoa descricao;
@@ -74,7 +70,7 @@ namespace ObjetosNegocio
         {
             nome = "";
             descricao = tipo;
-            codGlobal = cod;
+            cod = codGlobal;
             cod++;
             idade = 20;
             descricao = DescricaoPessoa.UTENTE;
@@ -90,10 +86,10 @@ namespace ObjetosNegocio
         /// <param name="Idade"></param>
         public Pessoa(string Nome, DescricaoPessoa descricaoP, int codGlob, int Idade)
         {
-            nome = Nome;
-            descricao = descricaoP;
-            codGlobal = codGlob;
-            idade = Idade;
+            this.nome = Nome;
+            this.descricao = descricaoP;
+            this.codGlobal = codGlob;
+            this.idade = Idade;
         }
 
         #endregion
@@ -117,7 +113,11 @@ namespace ObjetosNegocio
             set { descricao = value; }
         }
 
-        //ACHO QUE FALTA UMA PARA O CODGLOBAL!!!!!!
+        public int CodGlobal
+        {
+            set { codGlobal = value; }
+            get { return codGlobal; }
+        }
 
 
         /// <summary>
@@ -177,9 +177,11 @@ namespace ObjetosNegocio
         #endregion
     }
 
+    [Serializable]
     public class Utente : Pessoa
     {
         #region Atributos
+        [NonSerialized]
         //verificar se estes atributos dps vao ser public ou n... n tenho a certeza se vou ligar esta classe à classe Consulta...
 
         private string mail;
@@ -222,11 +224,11 @@ namespace ObjetosNegocio
         /// <param name="idadeUtente"></param>
         public Utente(string nome, int codUtente, string Mail, int NumTelefUtente, int idadeUtente)
         {
-            Nome = nome;
-            codGlobal = codUtente;
-            Idade = idadeUtente;
-            mail = Mail;
-            numTelef = NumTelefUtente;
+            this.Nome = nome;
+            this.codGlobal = codUtente;
+            this.Idade = idadeUtente;
+            this.mail = Mail;
+            this.numTelef = NumTelefUtente;
             numCartaoSaude++;
         }
 
@@ -264,7 +266,7 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format("Ficha do Funcionario-> Nome: {0};Codigo {1};Idade {2};Mail {3}; Num Telefone {4}; Num cartao saude {5} ", Nome, codGlobal, Idade, mail, numTelef, numCartaoSaude);
+            return String.Format("Ficha do Utente-> Nome: {0};Codigo {1};Idade {2};Mail {3}; Num Telefone {4}; Num cartao saude {5} ", Nome, codGlobal, Idade, mail, numTelef, numCartaoSaude);
         }
         #endregion
 
@@ -293,7 +295,7 @@ namespace ObjetosNegocio
 
         public override int GetHashCode()
         {
-            return codGlobal.GetHashCode(); 
+            return codGlobal.GetHashCode();
         }
 
         #endregion
@@ -301,10 +303,11 @@ namespace ObjetosNegocio
         #endregion
     }
 
+    [Serializable]
     public class Funcionario : Pessoa
     {
         #region Atributos
-
+        [NonSerialized]
         private CargoFuncionario cargo;
         private int numTelef;
         private int horario; // vai dizer quantos dias por semana trabalha(0 a 7)
@@ -395,7 +398,7 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format("Ficha do Funcionario-> Nome: {0};Codigo {1};Idade {2};Cargo {3}; Num Telefone {4}; Horario {5}; Salario {6} ",Nome, codGlobal, Idade, cargo, numTelef, horario, salario);
+            return String.Format("Ficha do Funcionario-> Nome: {0};Codigo {1};Idade {2};Cargo {3}; Num Telefone {4}; Horario {5}; Salario {6} ", Nome, codGlobal, Idade, cargo, numTelef, horario, salario);
         }
         #endregion
 
@@ -424,7 +427,7 @@ namespace ObjetosNegocio
 
         public override int GetHashCode()
         {
-            return codGlobal.GetHashCode(); 
+            return codGlobal.GetHashCode();
         }
 
         #endregion
@@ -432,9 +435,11 @@ namespace ObjetosNegocio
         #endregion
     }
 
+    [Serializable]
     public class Medico : Pessoa
     {
         #region Atributos
+        [NonSerialized]
         protected Especialidade tipoEspecialidade;
         private int salario;
         private int horarioTrabalho; //variavel para dizer quantos dias por semana o medico irá trabalhar(0 a 7)
@@ -512,12 +517,12 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format("Ficha do Funcionario-> Nome: {0};Codigo {1};Idade {2};Salario {3}; Horario Trabalho {4}; Tipo de especialidade {5} ", Nome, codGlobal, Idade, salario, horarioTrabalho, tipoEspecialidade);
+            return String.Format("Ficha do Medico-> Nome: {0};Codigo {1};Idade {2};Salario {3}; Horario Trabalho {4}; Tipo de especialidade {5} ", Nome, codGlobal, Idade, salario, horarioTrabalho, tipoEspecialidade);
         }
 
         public override int GetHashCode()
         {
-            return codGlobal.GetHashCode(); 
+            return codGlobal.GetHashCode();
         }
 
         #endregion
@@ -552,6 +557,5 @@ namespace ObjetosNegocio
 
         #endregion
     }
-
 
 }

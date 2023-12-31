@@ -1,11 +1,13 @@
-﻿/*
- *"Parâmetros" de cada consulta
- *Autor: Eduardo Queirós, nº 23005
- *
- */
-using System;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.IO;
+using System.Threading.Tasks;
+/**
+ * Declaração dos dados das consultas
+ */
+
 
 /// <summary>
 /// enumerado tipo de tratamanento que pode ser realizado durante uma consulta
@@ -20,24 +22,23 @@ public enum TipoTratamento
 /// <summary>
 /// Tipo de pagamento disponivel para pagar a consulta
 /// </summary>
-public enum TipoPagamento
-{
-    DINHEIRO,
-    CARTAO,
-    CHEQUE
-}
+//public enum TipoPagamento
+//{
+//    DINHEIRO,
+//    CARTAO,
+//    CHEQUE
+//}
 namespace ObjetosNegocio
 {
     [Serializable]
-    public class Consulta : IComparable
+    public class Consulta /*: IComparable*/
     {
-
         #region Atributos
 
         [NonSerialized]
-        private int id;
+        protected int id;
         private TipoTratamento tipoTrat;
-        private TipoPagamento tipoPag;
+        //private TipoPagamento tipoPag;
         private DateTime dataConsulta;
         private int duracao; //em minutos
 
@@ -54,14 +55,13 @@ namespace ObjetosNegocio
         /// </summary>
         /// <param name="idConsulta"></param>
         /// <param name="tipoTratamento"></param>
-        /// <param name="tipoPagamento"></param>
         /// <param name="dataCons"></param>
         /// <param name="duracaoConsulta"></param>
-        public Consulta(int idConsulta, TipoTratamento tipoTratamento, TipoPagamento tipoPagamento, DateTime dataCons, int duracaoConsulta)
+        public Consulta(int idConsulta, TipoTratamento tipoTratamento, DateTime dataCons, int duracaoConsulta)
         {
             this.id = idConsulta;
             this.tipoTrat = tipoTratamento;
-            this.tipoPag = tipoPagamento;
+            //this.tipoPag = tipoPagamento;
             this.dataConsulta = dataCons;
             this.duracao = duracaoConsulta;
         }
@@ -74,7 +74,7 @@ namespace ObjetosNegocio
         /// </summary>
         public int idConsulta
         {
-            get { return idConsulta; }
+            get { return id; }
         }
 
         /// <summary>
@@ -88,11 +88,11 @@ namespace ObjetosNegocio
         /// <summary>
         /// Propriedade para o tipo de pagamento
         /// </summary>
-        public TipoPagamento tipoPagamento
-        {
-            get { return tipoPagamento; }
-            set { tipoPagamento = value; }
-        }
+        //public TipoPagamento tipoPagamento
+        //{
+        //    get { return tipoPagamento; }
+        //    set { tipoPagamento = value; }
+        //}
 
         //Voltar a ver esta propriedade
 
@@ -105,6 +105,9 @@ namespace ObjetosNegocio
             set { dataConsulta = value; }
         }
 
+
+
+
         #endregion
 
         #region Override
@@ -115,7 +118,7 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("Consulta: Id {0} Tipo tratamento {1} Duracao {2} Data realizacao {3} Tipo de pagamento {4}", id, duracao, dataConsulta, tipoPagamento);
+            return string.Format("Consulta: Id {0} Duracao {1} Data realizacao {2} Tipo de tratamento {3}", id, duracao, dataConsulta, tipoTratamento);
         }
 
         /// <summary>
@@ -131,7 +134,7 @@ namespace ObjetosNegocio
             }
 
             Consulta aux = (Consulta)obj;
-            if (this.id == aux.id && this.tipoTratamento == aux.tipoTratamento && this.duracao == aux.duracao && this.tipoPagamento == aux.tipoPagamento)
+            if (this.id == aux.id && this.tipoTratamento == aux.tipoTratamento && this.duracao == aux.duracao)
             {
                 return true;
             }
@@ -152,7 +155,7 @@ namespace ObjetosNegocio
         #region Operadores
         public static bool operator ==(Consulta c1, Consulta c2)
         {
-            if ((c1.id == c2.id) && (c1.tipoTratamento == c2.tipoTratamento) && (c1.tipoPagamento == c2.tipoPagamento) && (c1.dataConsulta == c2.dataConsulta) && (c1.duracao == c2.duracao))
+            if ((c1.id == c2.id) && (c1.tipoTratamento == c2.tipoTratamento) && (c1.dataConsulta == c2.dataConsulta) && (c1.duracao == c2.duracao))
             {
                 return true;
             }

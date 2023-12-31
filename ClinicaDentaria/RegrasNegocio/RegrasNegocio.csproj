@@ -11,10 +11,7 @@
       <HintPath>..\Dados\bin\Debug\net6.0\Dados.dll</HintPath>
     </Reference>
     <Reference Include="ObjetosNegocio">
-      <HintPath>..\ObjetosNegocio\bin\Debug\net6.0\ObjetosNegocio.dll</HintPath>
-    </Reference>
-    <Reference Include="Validacoes">
-      <HintPath>..\Validacoes\bin\Debug\net6.0\Validacoes.dll</HintPath>
+      <HintPath>..\Dados\bin\Debug\net6.0\ObjetosNegocio.dll</HintPath>
     </Reference>
   </ItemGroup>
 

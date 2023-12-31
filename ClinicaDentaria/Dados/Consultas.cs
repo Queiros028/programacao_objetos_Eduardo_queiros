@@ -1,15 +1,16 @@
-﻿/*
- *Gestão das consultas
- *Autor: Eduardo Queirós, nº 23005
- *
- */
-using System;
-using System.Runtime.Serialization.Formatters.Binary;
+﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
-using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.IO;
+using System.Threading.Tasks;
 using ObjetosNegocio;
+using System.Net.NetworkInformation;
+
+/*
+ * Funções de inserir, existe, guardar, carregar, remover e ver para consultas 
+ */
 namespace Dados
 {
     [Serializable]
@@ -19,20 +20,33 @@ namespace Dados
         [NonSerialized]
         static Dictionary<int, List<Consulta>> consulta;
 
+        static Dictionary<int, List<Consulta>> duplicadoConsulta;
+
         /// <summary>
         /// Inicializar dictionary consulta
         /// </summary>
-         static Consultas()
+        static Consultas()
         {
             consulta = new Dictionary<int, List<Consulta>>();
+            duplicadoConsulta = new Dictionary<int, List<Consulta>>();
         }
 
-   /// <summary>
-   /// Insere uma consulta
-   /// </summary>
-   /// <param name="cons"></param>
-   /// <param name="id"></param>
-   /// <returns></returns>
+        /// <summary>
+        /// Copia dictionary de consultas
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<int, List<Consulta>> DictionaryC()
+        {
+            duplicadoConsulta = consulta.ToDictionary(entry => entry.Key, entry => entry.Value);
+            return duplicadoConsulta;
+        }
+
+        /// <summary>
+        /// Insere uma consulta
+        /// </summary>
+        /// <param name="cons"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static bool RegistaConsulta(Consulta cons, int id)
         {
             // Certifique-se de que a chave id existe no dicionário
@@ -49,7 +63,7 @@ namespace Dados
             }
 
             return false;
-        
+
 
         }
 
@@ -67,7 +81,7 @@ namespace Dados
                 return false;
             }
 
-            if (!consulta.ContainsKey(id))
+            if (consulta.ContainsKey(id))
                 consulta.Add(id, new List<Consulta>());
             if (!consulta[id].Contains(cons))
             {
@@ -133,7 +147,7 @@ namespace Dados
         /// </summary>
         /// <param name="pessoa"></param>
         /// <param name="chave"></param>
-        public static void RemoverConsulta(Consulta cons, int id)
+        public static bool RemoverConsulta(Consulta cons, int id)
         {
             // Verifica se a chave existe no dicionário antes de remover
             if (consulta.ContainsKey(id))
@@ -145,9 +159,24 @@ namespace Dados
             {
                 Console.WriteLine("A chave '{chave}' não existe no dicionário. Não é possível remover.", id);
             }
+            return false;
         }
 
+        /// <summary>
+        /// Ver dictionary de Medico
+        /// </summary>
+        public static void VerDictionaryC()
+        {
+            Consultas.DictionaryC();
+            foreach (KeyValuePair<int, List<Consulta>> entry in duplicadoConsulta)
+            {
+                Console.WriteLine($"ID: {0}", entry.Key);
+                foreach (Consulta c in entry.Value)
+                {
+                    Console.WriteLine(" " + c.ToString());
+                }
+            }
+        }
 
     }
-
 }
