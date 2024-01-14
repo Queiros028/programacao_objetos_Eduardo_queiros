@@ -11,7 +11,7 @@ using RegrasNegocio;
  * Author: Eduardo Queirós
  */
 
-namespace c
+namespace ClinicaDentaria
 {
     public class Program
     {
@@ -116,9 +116,8 @@ namespace c
             #region utentes
             Console.WriteLine("-----------------------Informacoes do Utente: --------------------------------");
             Console.WriteLine("");
-            Utente u1 = new Utente("Joao", 14, "joao@gmail.com", 912345655, 19);
-            Utente u2 = new Utente("Abilio", 20, "abilio@gmail.com", 987654321, 35);
-            Utente u3 = new Utente("Abilio", 20, "abilio@gmail.com", 987654321, 35);
+            Utente u1 = new Utente("Joao", "joao@gmail.com", 912345655, 19);
+            Utente u2 = new Utente("Abilio", "abilio@gmail.com", 987654321, 35);
 
             Console.WriteLine(u1.ToString());
             Console.WriteLine(u2);
@@ -128,7 +127,7 @@ namespace c
             Console.WriteLine("********************Funcoes para Utentes: ***********************");
             Console.WriteLine("1- Inserir pessoas:");
 
-            resultado = RegrasNegocio.GereClinica.InsereUtenteValid(u1, 14);
+            resultado = RegrasNegocio.GereClinica.InsereUtenteValid(u1, 1);
             if (resultado == true)
             {
                 Console.WriteLine("Utente inserido!");
@@ -137,7 +136,7 @@ namespace c
             {
                 Console.WriteLine("Peco desculpa mas nao foi possivel inserir o utente!");
             }
-            resultado = RegrasNegocio.GereClinica.InsereUtenteValid(u2, 20);
+            resultado = RegrasNegocio.GereClinica.InsereUtenteValid(u2, 2);
             if (resultado == true)
             {
                 Console.WriteLine("Utente inserido!");
@@ -169,7 +168,7 @@ namespace c
             }
 
             Console.WriteLine("3- Remover utente");
-            resultado = RegrasNegocio.GereClinica.removerU(u2, 20);
+            resultado = RegrasNegocio.GereClinica.removerU(u2, 2);
             if (resultado == true)
             {
                 Console.WriteLine("Utente removido com sucesso!!");
@@ -181,7 +180,7 @@ namespace c
 
 
             Console.WriteLine("4- Guardar utente em ficheiro: ");
-            resultado = RegrasNegocio.GereClinica.guardaFicheiroU(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\utentes.txt");
+            resultado = RegrasNegocio.GereClinica.guardaFicheiroU(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\utentes.txt");
             if (resultado == true)
             {
                 Console.WriteLine("Utente guardado com suceso!");
@@ -192,7 +191,7 @@ namespace c
             }
 
             Console.WriteLine("5- Carregar ficheiro utentes: ");
-            resultado = RegrasNegocio.GereClinica.carregarU(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\utentes.txt");
+            resultado = RegrasNegocio.GereClinica.carregarU(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\utentes.txt");
             if (resultado == true)
             {
                 Console.WriteLine("Utentes lidos com sucesso!");
@@ -213,8 +212,8 @@ namespace c
             Console.WriteLine();
             Console.WriteLine("-----------------------Informacoes do funcionario: --------------------------------");
 
-            Funcionario f1 = new Funcionario("andre", 6, CargoFuncionario.RECECIONISTA, 987654321, 5, 800, 54);
-            Funcionario f2 = new Funcionario("Gustavo", 12, CargoFuncionario.ASSISTENTE, 976543512, 5, 700, 55);
+            Funcionario f1 = new Funcionario("andre", CargoFuncionario.RECECIONISTA, 987654321, 5, 800, 54);
+            Funcionario f2 = new Funcionario("Gustavo", CargoFuncionario.ASSISTENTE, 976543512, 5, 700, 55);
             Console.WriteLine(f1);
             Console.WriteLine(f2);
 
@@ -222,7 +221,7 @@ namespace c
             Console.WriteLine("********************Funcoes para Funcionarios: ***********************");
 
             Console.WriteLine("1- Inserir funcionarios");
-            resultado = RegrasNegocio.GereClinica.InsereFuncValid(f1, 6);
+            resultado = RegrasNegocio.GereClinica.InsereFuncValid(f1, 3);
             if (resultado == true)
             {
                 Console.WriteLine("Funcionario inserido!");
@@ -232,7 +231,7 @@ namespace c
                 Console.WriteLine("Peco desculpa mas nao foi possivel inserir esse funcionario!");
             }
 
-            resultado = RegrasNegocio.GereClinica.InsereFuncValid(f2, 12);
+            resultado = RegrasNegocio.GereClinica.InsereFuncValid(f2, 4);
             if (resultado == true)
             {
                 Console.WriteLine("Funcionario inserido!");
@@ -265,7 +264,7 @@ namespace c
 
             Console.WriteLine("3- Remover funcionario: ");
 
-            resultado = RegrasNegocio.GereClinica.removerF(f2, 12);
+            resultado = RegrasNegocio.GereClinica.removerF(f2, 4);
             if (resultado == true)
             {
                 Console.WriteLine("Funcionario removido com sucesso!!");
@@ -276,7 +275,7 @@ namespace c
             }
 
             Console.WriteLine("4- Guardar no ficheiro: ");
-            resultado = RegrasNegocio.GereClinica.guardaFicheiroF(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\funcionarios.txt");
+            resultado = RegrasNegocio.GereClinica.guardaFicheiroF(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\funcionarios.txt");
             if (resultado == true)
             {
                 Console.WriteLine("Funcionario guardado com suceso!");
@@ -288,7 +287,7 @@ namespace c
 
             Console.WriteLine("5- Carregar ficheiro funcionario: ");
 
-            resultado = RegrasNegocio.GereClinica.carregarF(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\funcionarios.txt");
+            resultado = RegrasNegocio.GereClinica.carregarF(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\funcionarios.txt");
             if (resultado == true)
             {
                 Console.WriteLine("Funcionarios lidos com sucesso!");
@@ -309,8 +308,8 @@ namespace c
             Console.WriteLine();
             Console.WriteLine("-----------------------Informacoes do Medico: --------------------------------");
 
-            Medico m1 = new Medico("Manuel", 13, 5000, 5, Especialidade.ORTODONTIA, 60);
-            Medico m2 = new Medico("Jose", 9, 3500, 6, Especialidade.BRANQUEAMENTO, 55);
+            Medico m1 = new Medico("Manuel", 5000, 5, Especialidade.ORTODONTIA, 60);
+            Medico m2 = new Medico("Jose", 3500, 6, Especialidade.BRANQUEAMENTO, 55);
             Console.WriteLine(m1);
             Console.WriteLine(m2);
 
@@ -318,7 +317,7 @@ namespace c
             Console.WriteLine("********************Funcoes para Medicos: ***********************");
 
             Console.WriteLine("1- Inserir Medico: ");
-            resultado = RegrasNegocio.GereClinica.InsereMedicoValid(m1, 13);
+            resultado = RegrasNegocio.GereClinica.InsereMedicoValid(m1, 5);
             if (resultado == true)
             {
                 Console.WriteLine("Medico inserido!");
@@ -328,7 +327,7 @@ namespace c
                 Console.WriteLine("Peco desculpa mas nao foi possivel inserir esse Medico!");
             }
 
-            resultado = RegrasNegocio.GereClinica.InsereMedicoValid(m2, 9);
+            resultado = RegrasNegocio.GereClinica.InsereMedicoValid(m2, 6);
             if (resultado == true)
             {
                 Console.WriteLine("Medico inserido!");
@@ -359,7 +358,7 @@ namespace c
             }
 
             Console.WriteLine("3- Remover determinado medico: ");
-            resultado = RegrasNegocio.GereClinica.removerM(m2, 9);
+            resultado = RegrasNegocio.GereClinica.removerM(m2, 6);
             if (resultado == true)
             {
                 Console.WriteLine("Utente removido com sucesso!!");
@@ -370,7 +369,7 @@ namespace c
             }
 
             Console.WriteLine("4- Guardar medico em ficheiro binario");
-            resultado = RegrasNegocio.GereClinica.guardaFicheiroM(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\medicos.txt");
+            resultado = RegrasNegocio.GereClinica.guardaFicheiroM(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\medicos.txt");
             if (resultado == true)
             {
                 Console.WriteLine("Medico guardado com suceso!");
@@ -381,7 +380,7 @@ namespace c
             }
 
             Console.WriteLine("5- Carregar ficheiro: ");
-            resultado = RegrasNegocio.GereClinica.carregarM(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\medicos.txt");
+            resultado = RegrasNegocio.GereClinica.carregarM(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\medicos.txt");
             if (resultado == true)
             {
                 Console.WriteLine("Medicos lidos com suceso!");
@@ -409,9 +408,8 @@ namespace c
             Console.WriteLine("         Informacoes de Consultas: ");
             Console.WriteLine("");
 
-            Consulta c1 = new Consulta(1, TipoTratamento.ORTODONTIA, DateTime.Now, 30);
-            Consulta c2 = new Consulta(2, TipoTratamento.RESTAURACAO, DateTime.Now, 45);
-
+            Consulta c1 = new Consulta(TipoTratamento.ORTODONTIA, DateTime.Now.AddDays(-2), 30);
+            Consulta c2 = new Consulta(TipoTratamento.RESTAURACAO, DateTime.Now, 45);
 
 
             Console.WriteLine("1-Inserir Consulta: ");
@@ -459,7 +457,7 @@ namespace c
 
 
             Console.WriteLine("4- Guardar consulta em ficheiro: ");
-            resultadoCons = RegrasNegocio.GereClinica.guardaFicheiroConsulta(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\consultas.txt");
+            resultadoCons = RegrasNegocio.GereClinica.guardaFicheiroConsulta(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\consultas.txt");
             if (resultadoCons == true)
             {
                 Console.WriteLine("Medico guardado com suceso!");
@@ -471,7 +469,7 @@ namespace c
 
 
             Console.WriteLine("5- Carregar dados consulta: ");
-            resultadoCons = RegrasNegocio.GereClinica.carregarConsulta(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\ClinicaDentaria\consultas.txt");
+            resultadoCons = RegrasNegocio.GereClinica.carregarConsulta(@"C:\Users\wados\OneDrive\Ambiente de Trabalho\stuff\eduardo\licenciatura\2 ano\Programacao_obj\programacao_objetos_Eduardo_queiros\test\consultas.txt");
             if (resultadoCons == true)
             {
                 Console.WriteLine("Consulta lida com suceso!");
@@ -483,7 +481,6 @@ namespace c
 
             Console.WriteLine("6- Mostrar: ");
             //RegrasNegocio.GereClinica.MostraC();
-
             #endregion
 
 
@@ -492,4 +489,3 @@ namespace c
         }
     }
 }
-

@@ -19,24 +19,17 @@ public enum TipoTratamento
     RESTAURACAO, //restauraçao do dente do utente
     DESVITALIZACAO //desvitalização do dente do utente
 }
-/// <summary>
-/// Tipo de pagamento disponivel para pagar a consulta
-/// </summary>
-//public enum TipoPagamento
-//{
-//    DINHEIRO,
-//    CARTAO,
-//    CHEQUE
-//}
+
 namespace ObjetosNegocio
 {
     [Serializable]
-    public class Consulta /*: IComparable*/
+    public class Consulta
     {
         #region Atributos
 
         [NonSerialized]
-        protected int id;
+        private static int id;
+        private static int codConsulta;
         private TipoTratamento tipoTrat;
         //private TipoPagamento tipoPag;
         private DateTime dataConsulta;
@@ -51,15 +44,25 @@ namespace ObjetosNegocio
         #region Construtores
 
         /// <summary>
+        /// Construtor para os atributos static
+        /// </summary>
+        static Consulta()
+        {
+            id = 1;
+            codConsulta = 1;
+        }
+
+
+        /// <summary>
         ///Construtor Consulta
         /// </summary>
         /// <param name="idConsulta"></param>
         /// <param name="tipoTratamento"></param>
         /// <param name="dataCons"></param>
         /// <param name="duracaoConsulta"></param>
-        public Consulta(int idConsulta, TipoTratamento tipoTratamento, DateTime dataCons, int duracaoConsulta)
+        public Consulta(TipoTratamento tipoTratamento, DateTime dataCons, int duracaoConsulta)
         {
-            this.id = idConsulta;
+            id = codConsulta++;
             this.tipoTrat = tipoTratamento;
             //this.tipoPag = tipoPagamento;
             this.dataConsulta = dataCons;
@@ -72,10 +75,19 @@ namespace ObjetosNegocio
         /// <summary>
         /// Propriedade para o id da consulta
         /// </summary>
-        public int idConsulta
+        public static int Id
         {
             get { return id; }
         }
+
+        /// <summary>
+        /// Propriedade para o codigo da consulta
+        /// </summary>
+        public static int CodConsulta
+        {
+            get { return codConsulta; }
+        }
+
 
         /// <summary>
         /// Propriedade para o tipo de tratamento
@@ -85,16 +97,7 @@ namespace ObjetosNegocio
             get { return tipoTratamento; }
             set { tipoTratamento = value; }
         }
-        /// <summary>
-        /// Propriedade para o tipo de pagamento
-        /// </summary>
-        //public TipoPagamento tipoPagamento
-        //{
-        //    get { return tipoPagamento; }
-        //    set { tipoPagamento = value; }
-        //}
 
-        //Voltar a ver esta propriedade
 
         /// <summary>
         /// Propriedade para a data da consulta
@@ -104,8 +107,14 @@ namespace ObjetosNegocio
             get { return dataConsulta; }
             set { dataConsulta = value; }
         }
-
-
+        /// <summary>
+        /// Propriedade para a duracao da consulta
+        /// </summary>
+        public int DuracaoConsulta
+        {
+            get { return duracao; }
+            set { duracao = value; }
+        }
 
 
         #endregion
@@ -134,7 +143,7 @@ namespace ObjetosNegocio
             }
 
             Consulta aux = (Consulta)obj;
-            if (this.id == aux.id && this.tipoTratamento == aux.tipoTratamento && this.duracao == aux.duracao)
+            if (this.tipoTratamento == aux.tipoTratamento && this.duracao == aux.duracao)
             {
                 return true;
             }
@@ -155,7 +164,7 @@ namespace ObjetosNegocio
         #region Operadores
         public static bool operator ==(Consulta c1, Consulta c2)
         {
-            if ((c1.id == c2.id) && (c1.tipoTratamento == c2.tipoTratamento) && (c1.dataConsulta == c2.dataConsulta) && (c1.duracao == c2.duracao))
+            if ((c1.tipoTratamento == c2.tipoTratamento) && (c1.dataConsulta == c2.dataConsulta) && (c1.duracao == c2.duracao))
             {
                 return true;
             }
@@ -169,27 +178,7 @@ namespace ObjetosNegocio
         }
         #endregion
 
-        #region Outros Metodos
-
-        /// <summary>
-        /// Verificar se o objeto que está é consulta
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        public int CompareTo(object? obj)
-        {
-            if (obj.GetType() == typeof(Consulta))
-            {
-                Consulta aux = (Consulta)obj;
-                if (this.id.CompareTo(aux.id) > 0) return 1;
-                else
-                    if (this.id.CompareTo(aux.id) < 0) return -1;
-                return 0;
-            }
-            else
-                throw new Exception("Impossivel");
-        }
+        #region Outros Metodos       
 
 
         #endregion

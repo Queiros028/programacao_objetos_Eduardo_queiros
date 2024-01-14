@@ -47,8 +47,8 @@ namespace ObjetosNegocio
         protected DescricaoPessoa descricao;
         /*esta variavel vai ser a que vai identificar cada pessoa na clinica, e como esse codigo vai sempre ser o mesmo, coloquei static pois ao ser static,
          * ao fechar o programa, a memória vai continuar la */
-        private static int cod;
-        protected int codGlobal;
+        protected static int cod;
+        protected static int codGlobal;
         protected int idade;
 
         #endregion
@@ -62,21 +62,9 @@ namespace ObjetosNegocio
         static Pessoa()
         {
             cod = 1;
+            codGlobal = 1;
         }
-        /// <summary>
-        /// Construtor de pessoa com parâmetros default
-        /// </summary>
-        public Pessoa()
-        {
-            nome = "";
-            descricao = tipo;
-            cod = codGlobal;
-            cod++;
-            idade = 20;
-            descricao = DescricaoPessoa.UTENTE;
-            //descricao = DescricaoPessoa.MEDICO;
-            //descricao = DescricaoPessoa.FUNCIONARIO;            
-        }
+
         /// <summary>
         /// Construtor Pessoa
         /// </summary>
@@ -84,11 +72,11 @@ namespace ObjetosNegocio
         /// <param name="descricaoP"></param>
         /// <param name="codGlob"></param>
         /// <param name="Idade"></param>
-        public Pessoa(string Nome, DescricaoPessoa descricaoP, int codGlob, int Idade)
+        public Pessoa(string Nome, DescricaoPessoa descricaoP, int Idade)
         {
+            cod = codGlobal++;
             this.nome = Nome;
             this.descricao = descricaoP;
-            this.codGlobal = codGlob;
             this.idade = Idade;
         }
 
@@ -113,9 +101,19 @@ namespace ObjetosNegocio
             set { descricao = value; }
         }
 
-        public int CodGlobal
+        /// <summary>
+        /// Propriedade para cod
+        /// </summary>
+        public static int Cod
         {
-            set { codGlobal = value; }
+            get { return cod; }
+        }
+
+        /// <summary>
+        /// Propriedade para codigo global
+        /// </summary>
+        public static int CodGlobal
+        {
             get { return codGlobal; }
         }
 
@@ -138,7 +136,7 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format("Ficha da Pessoa-> Nome: {0}; Funcao: {1}; codigo {2}; idade {3}", nome, descricao, codGlobal, idade);
+            return String.Format("Ficha da Pessoa-> Nome: {0}; Funcao: {1}; codigo {2}; idade {3}", Nome, descricao, codGlobal, idade);
         }
 
         public override int GetHashCode()
@@ -163,8 +161,7 @@ namespace ObjetosNegocio
             }
 
             Pessoa aux = (Pessoa)obj;
-            //ver se neste if a primeira condição está correta...
-            if (cod == aux.codGlobal && System.String.Equals(nome, aux.nome) && descricao == aux.descricao)
+            if (System.String.Equals(nome, aux.nome) && descricao == aux.descricao)
             {
                 return true;
             }
@@ -200,20 +197,9 @@ namespace ObjetosNegocio
         /// </summary>
         static Utente()
         {
-            numCartaoSaude = 0;
+            numCartaoSaude = 1;
         }
-        /// <summary>
-        /// Construtor para parametros default
-        /// </summary>
-        public Utente()
-        {
-            Nome = "Antonio";
-            codGlobal = 10;
-            Idade = 17;
-            mail = " ";
-            numTelef = 987654321;
-            numCartaoSaude++;
-        }
+
         /// <summary>
         /// Construtor de Utente
         /// </summary>
@@ -222,10 +208,9 @@ namespace ObjetosNegocio
         /// <param name="Mail"></param>
         /// <param name="NumTelefUtente"></param>
         /// <param name="idadeUtente"></param>
-        public Utente(string nome, int codUtente, string Mail, int NumTelefUtente, int idadeUtente)
+        public Utente(string nome, string Mail, int NumTelefUtente, int idadeUtente) : base(nome, DescricaoPessoa.UTENTE, idadeUtente)
         {
             this.Nome = nome;
-            this.codGlobal = codUtente;
             this.Idade = idadeUtente;
             this.mail = Mail;
             this.numTelef = NumTelefUtente;
@@ -285,7 +270,7 @@ namespace ObjetosNegocio
 
             Utente aux = (Utente)obj;
             //ver se neste if a primeira condição está correta...
-            if (System.String.Equals(Nome, aux.Nome) && codGlobal == aux.codGlobal && Idade == aux.idade)
+            if (System.String.Equals(Nome, aux.Nome) && (Idade == aux.idade) && System.String.Equals(Mail, aux.Mail))
             {
                 return true;
             }
@@ -319,20 +304,7 @@ namespace ObjetosNegocio
         #region Métodos
 
         #region Construtores
-        /// <summary>
-        /// Construtor parametros default para funcionário
-        /// </summary>
-        public Funcionario()
-        {
-            Nome = "Joaquim ";
-            codGlobal = 20;
-            idade = 23;
-            //descricao = DescricaoPessoa.FUNCIONARIO; -> penso que n faz sentido por isso retirei
-            cargo = CargoFuncionario.ASSISTENTE;
-            numTelef = 912345678;
-            horario = 2;
-            salario = 900;
-        }
+
         /// <summary>
         /// Construtor para funcionário
         /// </summary>
@@ -343,10 +315,9 @@ namespace ObjetosNegocio
         /// <param name="HorarioFunc"></param>
         /// <param name="SalarioFunc"></param>
         /// <param name="idadeFunc"></param>
-        public Funcionario(string nome, int codigoFunc, CargoFuncionario CargoFunc, int NumTeleFuncionario, int HorarioFunc, int SalarioFunc, int idadeFunc)
+        public Funcionario(string nome, CargoFuncionario CargoFunc, int NumTeleFuncionario, int HorarioFunc, int SalarioFunc, int idadeFunc) : base(nome, DescricaoPessoa.FUNCIONARIO, idadeFunc)
         {
             Nome = nome;
-            codGlobal = codigoFunc;
             Idade = idadeFunc;
             cargo = CargoFunc;
             numTelef = NumTeleFuncionario;
@@ -417,7 +388,7 @@ namespace ObjetosNegocio
 
             Funcionario aux = (Funcionario)obj;
             //ver se neste if a primeira condição está correta...
-            if (codGlobal == aux.codGlobal && System.String.Equals(Nome, aux.Nome) && Idade == aux.idade)
+            if (System.String.Equals(Nome, aux.Nome) && Idade == aux.idade)
             {
                 return true;
             }
@@ -449,18 +420,7 @@ namespace ObjetosNegocio
         #region Métodos
 
         #region Construtores
-        /// <summary>
-        /// Construtor com parâmetros default
-        /// </summary>
-        public Medico()
-        {
-            Nome = "Maria";
-            codGlobal = 30;
-            idade = 27;
-            salario = 1000;
-            horarioTrabalho = 5;
-            tipoEspecialidade = Especialidade.ORTODONTIA;
-        }
+
 
         /// <summary>
         /// Construtor para Medico
@@ -471,10 +431,9 @@ namespace ObjetosNegocio
         /// <param name="Horario"></param>
         /// <param name="TipoEsp"></param>
         /// <param name="idadeMedico"></param>
-        public Medico(string nome, int codMedico, int Salario, int Horario, Especialidade TipoEsp, int idadeMedico)
+        public Medico(string nome, int Salario, int Horario, Especialidade TipoEsp, int idadeMedico) : base(nome, DescricaoPessoa.MEDICO, idadeMedico)
         {
             this.Nome = nome;
-            this.codGlobal = codMedico;
             this.Idade = idadeMedico;
             this.salario = Salario;
             this.horarioTrabalho = Horario;
@@ -545,7 +504,7 @@ namespace ObjetosNegocio
 
             Medico aux = (Medico)obj;
             //ver se neste if a primeira condição está correta...
-            if (System.String.Equals(Nome, aux.Nome) && codGlobal == aux.codGlobal && Idade == aux.idade)
+            if (System.String.Equals(Nome, aux.Nome) && Idade == aux.idade)
             {
                 return true;
             }

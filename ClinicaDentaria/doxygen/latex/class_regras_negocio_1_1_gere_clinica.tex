@@ -1,0 +1,416 @@
+\hypertarget{class_regras_negocio_1_1_gere_clinica}{}\doxysection{Regras\+Negocio.\+Gere\+Clinica Class Reference}
+\label{class_regras_negocio_1_1_gere_clinica}\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a7ad58e128c5815d42de2354cdf0ad5ee}\label{class_regras_negocio_1_1_gere_clinica_a7ad58e128c5815d42de2354cdf0ad5ee}} 
+static bool {\bfseries Insere\+Utente\+Valid} (\mbox{\hyperlink{class_objetos_negocio_1_1_utente}{Utente}} u, int id)
+\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_ad720d2824591c01e2eb0018e083654b3}{Verifica\+Se\+Utente\+Existe}} (\mbox{\hyperlink{class_objetos_negocio_1_1_utente}{Utente}} u, string nome)
+\begin{DoxyCompactList}\small\item\em Verificar se existe utente, só existe se o nome nao for nulo. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a677baee258520869958f21e6809862e2}{guarda\+FicheiroU}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Regra para guardar as informacoes do utente num ficheiro. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a21d006fd7a2212e0d0f0c0447ebd2dc6}{carregarU}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Carregar/ler ficheiro utente. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a793ceb850263ab8fcfcfef2d37a02a0f}{removerU}} (\mbox{\hyperlink{class_objetos_negocio_1_1_utente}{Utente}} u, int id)
+\begin{DoxyCompactList}\small\item\em Regra para remover utente. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a4b94738cb3322bad43d3816fdb8c822a}\label{class_regras_negocio_1_1_gere_clinica_a4b94738cb3322bad43d3816fdb8c822a}} 
+static void {\bfseries mostrarU} ()
+\begin{DoxyCompactList}\small\item\em Mostrar o dictionary de utentes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a32c4f4a9e2c2e7ff20a467937752b0ab}\label{class_regras_negocio_1_1_gere_clinica_a32c4f4a9e2c2e7ff20a467937752b0ab}} 
+static bool {\bfseries Insere\+Func\+Valid} (\mbox{\hyperlink{class_objetos_negocio_1_1_funcionario}{Funcionario}} f, int id)
+\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_ad6cac86d79e44c98e4ef5ef8b295abe3}{Verifica\+Se\+Funcionario\+Existe}} (\mbox{\hyperlink{class_objetos_negocio_1_1_funcionario}{Funcionario}} f, string nome)
+\begin{DoxyCompactList}\small\item\em Verificar se o funcionario existe, so existe se o nome nao for nulo. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a445e667f1df5a0c08504be1ab43abc3d}{guarda\+FicheiroF}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Guardar funcionario num ficheiro binario. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_ab66dcf743ef27eaabff1d6eb80934640}{carregarF}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Carregar/ler ficheiro funcionario. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a7593b71eb26fd749d3bf8465ce845e18}{removerF}} (\mbox{\hyperlink{class_objetos_negocio_1_1_funcionario}{Funcionario}} f, int id)
+\begin{DoxyCompactList}\small\item\em Regra para remover funcionario. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a45b526d6c76b486ce5b0e75b746f61f8}\label{class_regras_negocio_1_1_gere_clinica_a45b526d6c76b486ce5b0e75b746f61f8}} 
+static void {\bfseries MostraF} ()
+\begin{DoxyCompactList}\small\item\em Mostrar dictionary de funcionarios. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_acc8d8b56a713f430810b626901af2a03}\label{class_regras_negocio_1_1_gere_clinica_acc8d8b56a713f430810b626901af2a03}} 
+static bool {\bfseries Insere\+Medico\+Valid} (\mbox{\hyperlink{class_objetos_negocio_1_1_medico}{Medico}} m, int id)
+\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a8d192e144765e9812c82bd43bdf6f3b1}{Verifica\+Se\+Medico\+Existe}} (\mbox{\hyperlink{class_objetos_negocio_1_1_medico}{Medico}} m, string nome)
+\begin{DoxyCompactList}\small\item\em Verifica se o funcionario existe, so existe caso o nome nao for nulo. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a724b5561e0b2333e13e614a8ba501e15}{guarda\+FicheiroM}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Guardar medico num ficheiro binario. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_ae814d3f923081e54d85ed182ff4ca924}{carregarM}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Carregar/ler ficheiro de medico. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_ac5a39f1353a047b62937a51ccbe28c89}{removerM}} (\mbox{\hyperlink{class_objetos_negocio_1_1_medico}{Medico}} m, int id)
+\begin{DoxyCompactList}\small\item\em Regra para remover medico. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a67958bcb52a39a4cd07948ba7975471b}\label{class_regras_negocio_1_1_gere_clinica_a67958bcb52a39a4cd07948ba7975471b}} 
+static void {\bfseries MostraM} ()
+\begin{DoxyCompactList}\small\item\em Mostrar dictionary de medicos. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a743cc189ff144a54daedcf7a03e91ee4}{Insere\+Consulta\+Valid}} (\mbox{\hyperlink{class_objetos_negocio_1_1_consulta}{Consulta}} c, int id)
+\begin{DoxyCompactList}\small\item\em Regra de negocio ao inserir consulta. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a7fe3dc453279a59a04eefe37b3740361}{Verifica\+Se\+Consulta\+Existe}} (\mbox{\hyperlink{class_objetos_negocio_1_1_consulta}{Consulta}} c, int id)
+\begin{DoxyCompactList}\small\item\em Verificar se consulta existe, caso o id da consulta for maior que 0. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_a866f74dd38cd7e8b5ef85d73191dca0b}{guarda\+Ficheiro\+Consulta}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Guardar dados da consulta num ficheiro binario. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_afb0def2c860f2935d6c33d88b4929405}{carregar\+Consulta}} (string nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Carregar/ler ficheiro binario de consultas. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_regras_negocio_1_1_gere_clinica_ad939171341f810fa578c415d0e4ccd8f}{Remover\+Consulta}} (\mbox{\hyperlink{class_objetos_negocio_1_1_consulta}{Consulta}} c, int id)
+\begin{DoxyCompactList}\small\item\em Regra para remover consulta. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_ad49168abf46416df7536560620e64e1c}\label{class_regras_negocio_1_1_gere_clinica_ad49168abf46416df7536560620e64e1c}} 
+static void {\bfseries MostraC} ()
+\begin{DoxyCompactList}\small\item\em Mostrar dictionary de consultas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_afb0def2c860f2935d6c33d88b4929405}\label{class_regras_negocio_1_1_gere_clinica_afb0def2c860f2935d6c33d88b4929405}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!carregarConsulta@{carregarConsulta}}
+\index{carregarConsulta@{carregarConsulta}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{carregarConsulta()}{carregarConsulta()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+carregar\+Consulta (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Carregar/ler ficheiro binario de consultas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_ab66dcf743ef27eaabff1d6eb80934640}\label{class_regras_negocio_1_1_gere_clinica_ab66dcf743ef27eaabff1d6eb80934640}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!carregarF@{carregarF}}
+\index{carregarF@{carregarF}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{carregarF()}{carregarF()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+carregarF (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Carregar/ler ficheiro funcionario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_ae814d3f923081e54d85ed182ff4ca924}\label{class_regras_negocio_1_1_gere_clinica_ae814d3f923081e54d85ed182ff4ca924}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!carregarM@{carregarM}}
+\index{carregarM@{carregarM}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{carregarM()}{carregarM()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+carregarM (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Carregar/ler ficheiro de medico. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a21d006fd7a2212e0d0f0c0447ebd2dc6}\label{class_regras_negocio_1_1_gere_clinica_a21d006fd7a2212e0d0f0c0447ebd2dc6}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!carregarU@{carregarU}}
+\index{carregarU@{carregarU}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{carregarU()}{carregarU()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+carregarU (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Carregar/ler ficheiro utente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a866f74dd38cd7e8b5ef85d73191dca0b}\label{class_regras_negocio_1_1_gere_clinica_a866f74dd38cd7e8b5ef85d73191dca0b}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!guardaFicheiroConsulta@{guardaFicheiroConsulta}}
+\index{guardaFicheiroConsulta@{guardaFicheiroConsulta}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{guardaFicheiroConsulta()}{guardaFicheiroConsulta()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+guarda\+Ficheiro\+Consulta (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Guardar dados da consulta num ficheiro binario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a445e667f1df5a0c08504be1ab43abc3d}\label{class_regras_negocio_1_1_gere_clinica_a445e667f1df5a0c08504be1ab43abc3d}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!guardaFicheiroF@{guardaFicheiroF}}
+\index{guardaFicheiroF@{guardaFicheiroF}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{guardaFicheiroF()}{guardaFicheiroF()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+guarda\+FicheiroF (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Guardar funcionario num ficheiro binario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & \\
+\hline
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a724b5561e0b2333e13e614a8ba501e15}\label{class_regras_negocio_1_1_gere_clinica_a724b5561e0b2333e13e614a8ba501e15}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!guardaFicheiroM@{guardaFicheiroM}}
+\index{guardaFicheiroM@{guardaFicheiroM}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{guardaFicheiroM()}{guardaFicheiroM()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+guarda\+FicheiroM (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Guardar medico num ficheiro binario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a677baee258520869958f21e6809862e2}\label{class_regras_negocio_1_1_gere_clinica_a677baee258520869958f21e6809862e2}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!guardaFicheiroU@{guardaFicheiroU}}
+\index{guardaFicheiroU@{guardaFicheiroU}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{guardaFicheiroU()}{guardaFicheiroU()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+guarda\+FicheiroU (\begin{DoxyParamCaption}\item[{string}]{nome\+Ficheiro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Regra para guardar as informacoes do utente num ficheiro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & \\
+\hline
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a743cc189ff144a54daedcf7a03e91ee4}\label{class_regras_negocio_1_1_gere_clinica_a743cc189ff144a54daedcf7a03e91ee4}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!InsereConsultaValid@{InsereConsultaValid}}
+\index{InsereConsultaValid@{InsereConsultaValid}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{InsereConsultaValid()}{InsereConsultaValid()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+Insere\+Consulta\+Valid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_consulta}{Consulta}}}]{c,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Regra de negocio ao inserir consulta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_ad939171341f810fa578c415d0e4ccd8f}\label{class_regras_negocio_1_1_gere_clinica_ad939171341f810fa578c415d0e4ccd8f}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!RemoverConsulta@{RemoverConsulta}}
+\index{RemoverConsulta@{RemoverConsulta}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{RemoverConsulta()}{RemoverConsulta()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+Remover\+Consulta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_consulta}{Consulta}}}]{c,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Regra para remover consulta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a7593b71eb26fd749d3bf8465ce845e18}\label{class_regras_negocio_1_1_gere_clinica_a7593b71eb26fd749d3bf8465ce845e18}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!removerF@{removerF}}
+\index{removerF@{removerF}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{removerF()}{removerF()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+removerF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_funcionario}{Funcionario}}}]{f,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Regra para remover funcionario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_ac5a39f1353a047b62937a51ccbe28c89}\label{class_regras_negocio_1_1_gere_clinica_ac5a39f1353a047b62937a51ccbe28c89}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!removerM@{removerM}}
+\index{removerM@{removerM}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{removerM()}{removerM()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+removerM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_medico}{Medico}}}]{m,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Regra para remover medico. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a793ceb850263ab8fcfcfef2d37a02a0f}\label{class_regras_negocio_1_1_gere_clinica_a793ceb850263ab8fcfcfef2d37a02a0f}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!removerU@{removerU}}
+\index{removerU@{removerU}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{removerU()}{removerU()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+removerU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_utente}{Utente}}}]{u,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Regra para remover utente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a7fe3dc453279a59a04eefe37b3740361}\label{class_regras_negocio_1_1_gere_clinica_a7fe3dc453279a59a04eefe37b3740361}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!VerificaSeConsultaExiste@{VerificaSeConsultaExiste}}
+\index{VerificaSeConsultaExiste@{VerificaSeConsultaExiste}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{VerificaSeConsultaExiste()}{VerificaSeConsultaExiste()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+Verifica\+Se\+Consulta\+Existe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_consulta}{Consulta}}}]{c,  }\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verificar se consulta existe, caso o id da consulta for maior que 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_ad6cac86d79e44c98e4ef5ef8b295abe3}\label{class_regras_negocio_1_1_gere_clinica_ad6cac86d79e44c98e4ef5ef8b295abe3}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!VerificaSeFuncionarioExiste@{VerificaSeFuncionarioExiste}}
+\index{VerificaSeFuncionarioExiste@{VerificaSeFuncionarioExiste}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{VerificaSeFuncionarioExiste()}{VerificaSeFuncionarioExiste()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+Verifica\+Se\+Funcionario\+Existe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_funcionario}{Funcionario}}}]{f,  }\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verificar se o funcionario existe, so existe se o nome nao for nulo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & \\
+\hline
+{\em nome} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_a8d192e144765e9812c82bd43bdf6f3b1}\label{class_regras_negocio_1_1_gere_clinica_a8d192e144765e9812c82bd43bdf6f3b1}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!VerificaSeMedicoExiste@{VerificaSeMedicoExiste}}
+\index{VerificaSeMedicoExiste@{VerificaSeMedicoExiste}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{VerificaSeMedicoExiste()}{VerificaSeMedicoExiste()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+Verifica\+Se\+Medico\+Existe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_medico}{Medico}}}]{m,  }\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verifica se o funcionario existe, so existe caso o nome nao for nulo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \\
+\hline
+{\em nome} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_regras_negocio_1_1_gere_clinica_ad720d2824591c01e2eb0018e083654b3}\label{class_regras_negocio_1_1_gere_clinica_ad720d2824591c01e2eb0018e083654b3}} 
+\index{RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}!VerificaSeUtenteExiste@{VerificaSeUtenteExiste}}
+\index{VerificaSeUtenteExiste@{VerificaSeUtenteExiste}!RegrasNegocio.GereClinica@{RegrasNegocio.GereClinica}}
+\doxysubsubsection{\texorpdfstring{VerificaSeUtenteExiste()}{VerificaSeUtenteExiste()}}
+{\footnotesize\ttfamily static bool Regras\+Negocio.\+Gere\+Clinica.\+Verifica\+Se\+Utente\+Existe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_objetos_negocio_1_1_utente}{Utente}}}]{u,  }\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verificar se existe utente, só existe se o nome nao for nulo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & \\
+\hline
+{\em nome} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/wados/\+One\+Drive/\+Ambiente de Trabalho/stuff/eduardo/licenciatura/2 ano/\+Programacao\+\_\+obj/programacao\+\_\+objetos\+\_\+\+Eduardo\+\_\+queiros/\+Clinica\+Dentaria/\+Regras\+Negocio/Gere\+Clinica.\+cs\end{DoxyCompactItemize}
