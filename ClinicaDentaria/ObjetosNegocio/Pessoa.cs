@@ -251,7 +251,7 @@ namespace ObjetosNegocio
         /// <returns></returns>
         public override string ToString()
         {
-            return String.Format("Ficha do Utente-> Nome: {0};Codigo {1};Idade {2};Mail {3}; Num Telefone {4}; Num cartao saude {5} ", Nome, codGlobal, Idade, mail, numTelef, numCartaoSaude);
+            return String.Format("Ficha do Utente-> Nome: {0};Codigo {1};Idade {2};Mail {3}; Num Telefone {4}; Num cartao saude {5} ", Nome, cod, Idade, mail, numTelef, numCartaoSaude);
         }
         #endregion
 
